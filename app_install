@@ -163,7 +163,14 @@ install_standart_package() {
 
 install_theme_nautilus(){
 
-    copy_dir_from_dotfiles "themes" 
+    # https://github.com/EliverLara/Nordic
+    mkdir ~/.themes 2>/dev/null
+    cd ~/.themes 
+    
+    if [ ! -d "~/.themes/Nordic" ]; then
+        git clone https://github.com/EliverLara/Nordic.git
+    fi
+    
     # icon papirus
     sudo add-apt-repository ppa:papirus/papirus
     sudo apt-get update
@@ -314,7 +321,7 @@ copy_all_dir(){
     copy_dir_from_dotfiles "config/.base16-tmux"
     copy_dir_from_dotfiles "config/gtk-2.0"
     copy_dir_from_dotfiles "config/gtk-3.0"
-    copy_dir_from_dotfiles "themes" 
+    #copy_dir_from_dotfiles "themes" 
     copy_dir_from_dotfiles "local/share/fonts"
 
 }
