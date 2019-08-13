@@ -1,0 +1,18 @@
+#!/usr/bin/ruby
+require_relative './app.rb'
+
+default_config = {
+  color0: '#404040',
+  color1: '#ffffff',
+  x: 3527,
+  y: 30,
+  screen: 1,
+  width: 28,
+  month: DateTime.now.month,
+  year: DateTime.now.year,
+  toggle: true,
+}
+
+config = read_config(default_config)
+return if close && config[:toggle]
+open(config)

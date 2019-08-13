@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FILENAME=$1
+FILEBACKGROUND=$HOME/.config/background/background.jpg
+FILELOCK=$HOME/.config/i3lock/background.jpg
+FILELOCKPNG=$HOME/.config/i3lock/background.png
+EXT=${FILENAME##*.} 
+
+
+if [[ "${EXT^^}" = "JPG" ]] || [[ "${EXT^^}" = "JPEG" ]] ;then 
+
+    cp -- "$FILENAME" "$FILEBACKGROUND"
+    cp -- "$FILENAME" "$FILELOCK"
+    feh --bg-scale $FILEBACKGROUND &
+    convert "$FILENAME" "$FILELOCKPNG" &
+    rm -fr $FILELOCK
+
+elif [[ "${EXT^^}" = "PNG" ]]; then
+
+    cp -- "$FILENAME" "$FILEBACKGROUND"
+    cp -- "$FILENAME" "$FILELOCK"
+    feh --bg-scale $FILEBACKGROUND &
+    
+fi
+

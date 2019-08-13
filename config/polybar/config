@@ -1,0 +1,308 @@
+#  ____ _____ 
+# |  _ \_   _|  Derek Taylor (DistroTube)
+# | | | || |    http://www.youtube.com/c/DistroTube
+# | |_| || |    http://www.gitlab.com/dwt1/ 
+# |____/ |_|  	
+
+;=====================================================
+;
+; To learn more about how to configure Polybar
+; go to https://github.com/jaagr/polybar
+;
+; The README contains alot of information
+; Themes : https://github.com/jaagr/dots/tree/master/.local/etc/themer/themes
+; https://github.com/jaagr/polybar/wiki/
+; https://github.com/jaagr/polybar/wiki/Configuration
+; https://github.com/jaagr/polybar/wiki/Formatting
+;
+;=====================================================
+
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+; Define fallback values used by all module formats
+format-foreground = #000000
+format-background = #000000
+format-underline =
+format-overline =
+format-spacing = 
+format-margin =
+format-offset = 
+
+[colors]
+; Nord theme ============
+background = #282828 
+foreground = #c0c5ce
+alert = #bd2c40
+
+
+
+################################################################################
+################################################################################
+############                  MAINBAR-XMONAD                        ############
+################################################################################
+################################################################################
+
+[bar/mainbar-xmonad]
+monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+monitor-strict = false
+override-redirect = false
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false
+separator = 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+;border-size = 2
+;border-left-size = 25
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #505050
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "OverpassMono Nerd Font Mono Regular:size=12;2"
+font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+
+modules-left = ewmh 
+modules-center = xwindow 
+modules-right = memory2 arrow4 cpu2 arrow4  date
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-position = right
+tray-padding = 2
+tray-maxsize = 20
+tray-scale = 1.0
+tray-background = ${colors.background}
+
+
+################################################################################
+###############################################################################
+############                       MODULES ARROWS                     ############
+################################################################################
+################################################################################
+
+
+
+[module/arrow4]
+; grey to Blue
+type = custom/text
+content =" "
+content-font = 2
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+
+
+
+
+
+################################################################################
+###############################################################################
+############                       MODULES A-Z                      ############
+################################################################################
+################################################################################
+
+
+################################################################################
+
+[module/compton]
+;https://github.com/jaagr/polybar/wiki/User-contributed-modules#compton
+type = custom/script
+exec = ~/.config/polybar/scripts/compton.sh
+click-left = ~/.config/polybar/scripts/compton-toggle.sh
+interval = 5
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+;format-underline = #00AF02
+
+
+
+################################################################################
+
+[module/cpu2]
+;https://github.com/jaagr/polybar/wiki/Module:-cpu
+type = internal/cpu
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+format-foreground = ${colors.foreground}
+format-background =#404040 
+;${colors.background}
+#format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline= #fe8019
+
+label-font = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format-padding = 2
+format = <label> 
+
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label =   CPU%percentage:3%% 
+
+################################################################################
+
+[module/date]
+;https://github.com/jaagr/polybar/wiki/Module:-date
+type = internal/date
+; Seconds to sleep between updates
+interval = 1
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = "%{A1:/home/cyrille/script/dzen2-calendar/dzen2-calendar:} %d/%m/%Y"
+date-alt = " %a %b %d, %Y"
+time = %H:%M:%S
+time-alt = %H:%M:%S
+#format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+format-background =#404040 
+;format-background = ${colors.background}
+format-underline=#cc241d 
+label = "%date%  -  %time%"
+format-padding = 2
+
+#################################################################
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+;extra icons to choose from
+;http://fontawesome.io/cheatsheet/
+;       v     
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;
+icon-7 = 8;
+#icon-8 = 9;
+#icon-9 = 10;
+#icon-default = " "
+format = <label-state>
+label-monitor = %name%
+
+label-active = %name%
+label-active-foreground = ${colors.foreground}
+label-active-background = #404040
+label-active-underline= #fff 
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-background = ${colors.background}
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-underline = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+
+
+
+################################################################################
+
+[module/memory2]
+;https://github.com/jaagr/polybar/wiki/Module:-memory
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%% 
+
+format = RAM <label>
+#format-prefix = " "
+format-prefix-foreground = #fff
+format-foreground = ${colors.foreground}
+format-background = #404040 
+;${colors.background}
+format-underline= #fb4934
+format-padding = 2
+################################################################################
+
+[module/xwindow]
+;https://github.com/jaagr/polybar/wiki/Module:-xwindow
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
+
+format-prefix = "  "
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+###############################################################################
+# vim:ft=dosini
