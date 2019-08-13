@@ -2,7 +2,7 @@
 
 
 
-![](https://github.com/cysko77/dotfiles/raw/master/Images/Captures/2019-08-13_12-27-49.png) 
+![](https://github.com/cysko77/Images/raw/master/Captures/2019-08-13_12-27-49.png) 
 
 
 
@@ -52,11 +52,11 @@ and  more (font, wallpapers ) ...
 
 - To install applications,  do this command line in your terminal:
 
-  `bash ~/dotfiles/setup.sh`
+  `$ bash ~/dotfiles/install`
 
 - After your installed OhMyZsh, you restart the script to continue the installation.
 
-  `bash ~/dotfiles/setup.sh`
+  `$ bash ~/dotfiles/install`
 
 - At this end of installation, you can reboot your computer  to finalize  and login on herbstluftwm.
 

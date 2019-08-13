@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Vérifier si ubuntu
+if ! command -v dpkg &> /dev/null; then
+    echo "Ce script ne peut être utilsé seulement avec Ubuntu !"
+    exit 1
+fi
+
+cd $HOME
+
+
+do_app() {
+
+    while true; do
+        read -e -p "Que voulez-vous faire ? ([I]nstaller / [R]ien) app : " ANSWER
+        ANSWER=`echo $ANSWER | tr '[:upper:]' '[:lower:]'`
+        ANSWER=${ANSWER:-r}
+        case $ANSWER in
+            [i]* )
+                source $HOME/dotfiles/app_install
+                	eval install_all
+                break
+                ;;
+            [r]* )
+                echo " Script terminé !"\n
+                break
+                ;;
+            * )
+                echo "Mauvaise valeur !"
+                ;;
+        esac
+    done
+
+}
+
+
+do_app
