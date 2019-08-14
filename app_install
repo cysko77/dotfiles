@@ -170,13 +170,20 @@ install_theme_nautilus(){
     if [ ! -d "~/.themes/Nordic" ]; then
         git clone https://github.com/EliverLara/Nordic.git
     fi
-    
+   
+    #https://github.com/axxapy/Adwaita-dark-gtk2
+    if [ ! -d "~/.themes/Adwaita-dark" ]; then
+        git clone https://github.com/axxapy/Adwaita-dark-gtk2.git ~/Adwaita-dark
+    fi
+
+
     # icon papirus
     sudo add-apt-repository ppa:papirus/papirus
     sudo apt-get update
     sudo apt install -y papirus-icon-theme
     copy_dir_from_dotfiles "config/gtk-2.0"
     copy_dir_from_dotfiles "config/gtk-3.0"
+    cd
 
 
 }
