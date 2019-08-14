@@ -206,6 +206,9 @@ install_font(){
 
 install_fzf(){
 
+    #https://github.com/nicodebo/base16-fzf
+    git clone https://github.com/nicodebo/base16-fzf.git ~/dotfiles/config/
+
     # https://github.com/junegunn/fzf#using-git
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
@@ -225,6 +228,9 @@ install_fzf(){
 
 install_zsh() {
 
+    # https://github.com/chriskempson/base16-shell
+    git clone https://github.com/chriskempson/base16-shell.git ~/dotfiles/script/
+    
     sudo apt update
     sudo apt install -y zsh 
     chsh -s /bin/zsh
@@ -249,7 +255,9 @@ install_tmux(){
 
     sudo apt install -y tmux
     link_dotfiles .tmux.conf
-    copy_dir_from_dotfiles "config/.base16-tmux"
+
+    #https://github.com/mshkrebtan/base16-tmux
+    git clone https://github.com/mshkrebtan/base16-tmux.git ~/.config
 
 }
 
@@ -314,21 +322,3 @@ install_all(){
 }
 
 
-copy_all_dir(){
-
-    copy_dir_from_dotfiles "config/i3lock"
-    copy_dir_from_dotfiles "config/rofi"
-    copy_dir_from_dotfiles "config/base16-fzf"
-    copy_dir_from_dotfiles "config/compton"
-    copy_dir_from_dotfiles "config/vifm"
-    copy_dir_from_dotfiles "config/background"
-    copy_dir_from_dotfiles "config/herbstluftwm"
-    copy_dir_from_dotfiles "config/polybar"
-    copy_dir_from_dotfiles "config/nvim"   
-    copy_dir_from_dotfiles "config/.base16-tmux"
-    copy_dir_from_dotfiles "config/gtk-2.0"
-    copy_dir_from_dotfiles "config/gtk-3.0"
-    #copy_dir_from_dotfiles "themes" 
-    copy_dir_from_dotfiles "local/share/fonts"
-
-}

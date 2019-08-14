@@ -22,7 +22,7 @@ export FILE="vifm"
 ZSH_THEME="robbyrussell"
 #source "$HOME/.config/nvim/pack/minpac/start/gruvbox/gruvbox_256palette.sh"
 #Base16 Shell
-BASE16_SHELL="$HOME/script/base16/base16-shell/"
+BASE16_SHELL="$HOME/script/base16-shell/"
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
