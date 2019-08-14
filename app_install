@@ -173,7 +173,7 @@ install_theme_nautilus(){
    
     #https://github.com/axxapy/Adwaita-dark-gtk2
     if [ ! -d "~/.themes/Adwaita-dark" ]; then
-        git clone https://github.com/axxapy/Adwaita-dark-gtk2.git ~/Adwaita-dark
+        git clone https://github.com/axxapy/Adwaita-dark-gtk2.git ~/.themes/Adwaita-dark
     fi
 
 
@@ -229,7 +229,7 @@ install_fzf(){
 install_zsh() {
 
     # https://github.com/chriskempson/base16-shell
-    git clone https://github.com/chriskempson/base16-shell.git ~/dotfiles/script/
+    git clone https://github.com/chriskempson/base16-shell.git ~/dotfiles/script/base16-shell
     
     sudo apt update
     sudo apt install -y zsh 
@@ -257,7 +257,7 @@ install_tmux(){
     link_dotfiles .tmux.conf
 
     #https://github.com/mshkrebtan/base16-tmux
-    git clone https://github.com/mshkrebtan/base16-tmux.git ~/.config
+    git clone https://github.com/mshkrebtan/base16-tmux.git ~/.config/base16-tmux
 
 }
 
@@ -315,7 +315,8 @@ install_all(){
     install_app "nvim"
     install_app "vifm"
     install_app "images"
-    
+   
+    ln -fs ~/dotfiles/script  ~/script
     
     echo -e "\033[42;1mInstallation Terminé\033[0m"
 
