@@ -155,7 +155,6 @@ install_standart_package() {
     # Copy config dotfile
     copy_dir_from_dotfiles "config/i3lock"
     copy_dir_from_dotfiles "config/rofi"
-    copy_dir_from_dotfiles "config/base16-fzf"
     copy_dir_from_dotfiles "config/compton"
     copy_dir_from_dotfiles "config/background"
 
@@ -207,7 +206,7 @@ install_font(){
 install_fzf(){
 
     #https://github.com/nicodebo/base16-fzf
-    git clone https://github.com/nicodebo/base16-fzf.git ~/dotfiles/config/
+    git clone https://github.com/nicodebo/base16-fzf.git ~/.config/base16-fzf
 
     # https://github.com/junegunn/fzf#using-git
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
