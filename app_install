@@ -254,9 +254,7 @@ install_tmux(){
 
     sudo apt install -y tmux
     link_dotfiles .tmux.conf
-
-    #https://github.com/mshkrebtan/base16-tmux
-    git clone https://github.com/mshkrebtan/base16-tmux.git ~/.config/base16-tmux
+    copy_dir_from_dotfiles "config/base16-tmux"
 
 }
 
