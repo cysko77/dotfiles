@@ -314,7 +314,8 @@ install_all(){
     install_app "images"
    
     ln -fs ~/dotfiles/script  ~/script
-    
+    link_dotfiles .gitconfig
+
     echo -e "\033[42;1mInstallation Terminé\033[0m"
 
 }
